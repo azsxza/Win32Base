@@ -24,7 +24,7 @@ bool InitWindowsApp(HINSTANCE instanceHandle, int show)
 	wc.hInstance = instanceHandle;
 	wc.hIcon = LoadIcon(0, IDI_APPLICATION);
 	wc.hCursor = LoadCursor(0, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+	wc.hbrBackground = (HBRUSH)GetStockObject(LTGRAY_BRUSH);
 	wc.lpszMenuName = 0;
 	wc.lpszClassName = L"Basic wnd class";
 
@@ -49,18 +49,16 @@ bool InitWindowsApp(HINSTANCE instanceHandle, int show)
 int Run()
 {
 	MSG msg = { 0 };
-	BOOL bRet = 1;
-	while ((bRet = GetMessage(&msg, 0, 0, 0)) != 0)
+	while (msg.message!=WM_QUIT)
 	{
-		if (bRet == -1)
-		{
-			MessageBox(0, L"Get Message Failed", L"Errot", MB_OK);
-			break;
-		}
-		else
+		if (PeekMessage(&msg,0,0,0,PM_REMOVE))
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
+		}
+		else
+		{
+			//动画或逻辑
 		}
 	}
 	return (int)msg.wParam;
