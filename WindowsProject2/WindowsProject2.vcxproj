@@ -142,9 +142,6 @@
     <ClCompile Include="WindowsProject2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="WindowsProject2.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="small.ico" />
     <Image Include="WindowsProject2.ico" />
   </ItemGroup>
